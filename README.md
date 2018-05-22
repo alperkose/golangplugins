@@ -20,7 +20,7 @@ Eventhough a similar issue was resolved in [this issue](http://golang.org/cl/636
 ## Caveats
 - plugins must be built with the same version of the Go toolchain as the main application
 - your plugin needs to be built from a main package
-    - go build -o plugin.so -buildmode=plugin .
+    - `go build -o plugin.so -buildmode=plugin .`
 - Before version 1.9.2; GOPATH for plugins and the actual system should be the same
 - Even after version 1.9.2 code for the plugin and the actual system should not use vendor folders (at least for the common packages)
 
