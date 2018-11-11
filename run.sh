@@ -1,7 +1,7 @@
 #!/bin/sh +x
 
 GO_VERSION=${1:-1.11}
-docker build -t golangplugins-example --build-arg GO_VERSION=$GO_VERSION .
+docker build -q -t golangplugins-example --build-arg GO_VERSION=$GO_VERSION .
 
 echo Go version
 docker run --entrypoint go golangplugins-example version
@@ -13,3 +13,7 @@ echo
 
 echo Running with vendored implementation
 docker run golangplugins-example -plugin vendoreduser.plugin
+echo 
+
+echo Running with implementation in different gopath
+docker run golangplugins-example -plugin differentgopath.plugin
