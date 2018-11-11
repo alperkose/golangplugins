@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"plugin"
 
@@ -8,7 +9,10 @@ import (
 )
 
 func main() {
-	p, err := plugin.Open("plugin.so")
+	pluginFileName := flag.String("plugin", "simpleuser.plugin", "provide the plugin file name")
+	flag.Parse()
+
+	p, err := plugin.Open(*pluginFileName)
 	if err != nil {
 		panic(err)
 	}
